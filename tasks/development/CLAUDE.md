@@ -1,61 +1,22 @@
-# CLAUDE.md — even-factorial (claude executor)
+# CLAUDE.md - even-factorial
 
-> Loaded by spec-executor 2.0. Copied from `tasks/development/CLAUDE.md`
-> to the worktree root during StartingExecutor. PROMPT.md is sent
-> as the first user message via `send_input`.
+## 工作协议
 
-## Mission
+你正在执行 `spec-executor-testing-02` 的 Rust 函数与测试开发任务。请先阅读 `docs/PRD.md`、`docs/HLD.md` 和 `docs/LLD.md`。
 
-Create a Rust binary crate from scratch. The repository has no Rust
-code as baseline — you must produce `Cargo.toml` and `src/main.rs`
-implementing two public functions **with inline tests**, so that
-`cargo build && cargo test` passes:
+## 任务目标
 
-- `pub fn is_even(n: i32) -> bool` — returns `true` if `n` is even
-- `pub fn factorial(n: u64) -> u64` — returns `n!`; `0!` returns `1`
+创建 Rust binary crate，实现 `is_even` 与 `factorial`，并补齐内联测试。
 
-## Working Agreement
+## 交付要求
 
-- **Create** `Cargo.toml` and `src/main.rs` at the repo root.
-- **Standard library only.** No external dependencies.
-- **Do not modify** `tasks/development/`, `docs/`, `spec.yaml`,
-  `README.md`, `.gitignore`, or any file not related to the crate
-  you are creating.
-- **No `rust-toolchain.toml`.** Build with the resolved stable
-  toolchain.
-- **Functions and tests in `src/main.rs`.** Do not create
-  `src/lib.rs` or a separate library crate.
+- 创建 `Cargo.toml`。
+- 创建 `src/main.rs`。
+- 实现 `pub fn is_even(n: i32) -> bool`。
+- 实现 `pub fn factorial(n: u64) -> u64`，且 `factorial(0) == 1`。
+- 添加覆盖偶数、奇数、`0!`、`1!`、`5!` 的测试。
+- 不修改任务包和工作文档。
 
-Tests must cover at least:
-- `is_even` with even and odd inputs
-- `factorial` with `0`, `1`, and a small value (e.g. `5 → 120`)
+## 验证
 
-The `main` function must call both functions and print results so
-the crate compiles; the exact output is not verified by the spec.
-
-## Self-Verification
-
-```
-cargo build
-cargo test
-```
-
-Both must exit 0; all tests must pass.
-
-## Definition of Done
-
-1. `Cargo.toml` exists and defines a binary crate.
-2. `src/main.rs` exists with `is_even`, `factorial`, and a
-   `#[cfg(test)] mod tests` containing `test_is_even` and
-   `test_factorial`.
-3. `cargo build` and `cargo test` both exit 0.
-4. `tasks/development/` is byte-identical to the baseline
-   (verified by the spec).
-
-## Out of Scope
-
-- External crates or dependencies.
-- Integration tests, benchmarks, or examples.
-- Adding a `rust-toolchain.toml`.
-- Modifying any file outside the crate you create.
-- `Cargo.lock`.
+运行 `cargo build` 和 `cargo test`，并在最终回复中报告结果。

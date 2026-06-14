@@ -1,15 +1,17 @@
-# spec-executor-testing-02 — even-factorial
+# spec-executor-testing-02 - even-factorial
 
-spec-executor 2.0 测试用例：从零构建 Rust binary crate，实现 `is_even` 和 `factorial` 两个函数并附带 `#[cfg(test)]` 测试。
+Rust 函数与测试开发型独立测试仓库。该仓库用于验证 spec-executor 是否能够驱动 Claude/Codex 创建 Rust crate、实现基础函数并补齐内联单元测试。
 
 ## 目录
 
-- `tasks/development/spec.yaml` — spec-executor 2.0 入口
-- `tasks/development/CLAUDE.md` / `AGENTS.md` / `PROMPT.md` — 任务包
-- `docs/DELIVERY.md` — 验收标准说明
+- `docs/PRD.md`：产品需求。
+- `docs/HLD.md`：高层设计。
+- `docs/LLD.md`：详细设计。
+- `docs/DELIVERY.md`：交付说明模板。
+- `tasks/development/`：spec-executor task package。
 
 ## 运行
 
-```
+```bash
 spec-executor run --spec tasks/development/spec.yaml --workspace ./workspace
 ```

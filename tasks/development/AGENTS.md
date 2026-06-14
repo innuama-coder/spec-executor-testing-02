@@ -1,45 +1,19 @@
-# AGENTS.md — even-factorial (codex executor)
+# AGENTS.md - even-factorial
 
-> Loaded by spec-executor 2.0 when `executor: codex`. Copied to
-> the worktree root during StartingExecutor. PROMPT.md is sent as
-> the first user message via `send_input`.
+## 工作协议
 
-## Task
+你正在执行 `spec-executor-testing-02` 的 Rust 函数与测试开发任务。请读取工作文档后实现。
 
-Create a Rust binary crate from scratch. The repository has no Rust
-code as baseline — produce `Cargo.toml` and `src/main.rs` implementing
-two mathematical functions **with inline tests**:
+## 任务目标
 
-- `pub fn is_even(n: i32) -> bool`
-- `pub fn factorial(n: u64) -> u64`
+创建 Rust binary crate，实现 `is_even` 与 `factorial`，并通过 `cargo test` 验证。
 
-## Constraints
+## 约束
 
-- Create `Cargo.toml` and `src/main.rs` at the repo root.
-- Standard library only. No external dependencies.
-- Do not modify `tasks/development/`, `docs/`, `spec.yaml`,
-  `README.md`, `.gitignore`.
-- No `rust-toolchain.toml`.
-- Functions and tests in `src/main.rs`; no `src/lib.rs`.
+- 仅使用 Rust 标准库。
+- 不新增 `rust-toolchain.toml`。
+- 不修改 `tasks/development/`、`docs/`、`README.md`、`.gitignore` 或 `spec.yaml`。
 
-## Self-Verification (mandatory)
+## 完成标准
 
-```
-cargo build
-cargo test
-```
-
-## Definition of Done
-
-1. `Cargo.toml` exists.
-2. `src/main.rs` exists with `is_even`, `factorial`, and a
-   `#[cfg(test)] mod tests` containing `test_is_even` and
-   `test_factorial`.
-3. `cargo build` and `cargo test` both exit 0.
-4. `tasks/development/` is byte-identical to the baseline.
-
-## Out of Scope
-
-- Refactoring, comments, integration tests.
-- Adding CI, README, or `LICENSE` files.
-- External crates or dependencies.
+`cargo build` 与 `cargo test` 通过。

@@ -1,29 +1,28 @@
-# PROMPT.md — even-factorial (universal first instruction)
+# PROMPT.md
 
-> Sent as the first user message to whichever executor is launched,
-> via `send_input`.
+## 任务目标
 
----
+开始执行 `even-factorial` 任务。在空仓库中创建 Rust binary crate，实现 `is_even` 与 `factorial` 两个公共函数，并补齐内联单元测试。
 
-Begin the **even-factorial** task.
+## 必读上下文
 
-This repository has no Rust code. Create a binary crate from scratch
-with two functions and inline tests, so that `cargo test` passes.
+1. `docs/PRD.md`
+2. `docs/HLD.md`
+3. `docs/LLD.md`
+4. `CLAUDE.md` 或 `AGENTS.md`
 
-Read your working agreement: `CLAUDE.md` (claude) or `AGENTS.md`
-(codex) at the worktree root.
+## 交付物
 
-Steps:
-1. Create `Cargo.toml` and `src/main.rs`.
-2. Implement `pub fn is_even(n: i32) -> bool` and
-   `pub fn factorial(n: u64) -> u64` (with `factorial(0) == 1`).
-3. Add a `#[cfg(test)] mod tests` with `test_is_even` (even+odd) and
-   `test_factorial` (0!, 1!, 5!).
-4. Run `cargo build` and `cargo test`.
-5. Confirm all tests pass, then stop.
+- `Cargo.toml`
+- `src/main.rs`
 
-Constraints (full list in your agreement file):
-- Standard library only. No external dependencies.
-- Do not touch `tasks/development/`, `docs/`, `spec.yaml`,
-  `README.md`, `.gitignore`.
-- Do not add a `rust-toolchain.toml`.
+## 验收标准
+
+- `cargo build` 成功。
+- `cargo test` 成功。
+- 测试覆盖偶数、奇数、`0!`、`1!` 和 `5!`。
+- 不修改 `tasks/development/`、`docs/`、`README.md`、`.gitignore` 或 `spec.yaml`。
+
+## Handoff
+
+最终回复包含修改摘要、验证命令和验证结果。
